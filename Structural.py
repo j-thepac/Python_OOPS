@@ -74,3 +74,31 @@ class Computer:
 Computer()
 
 # FlyWeight
+class A: pass
+class Flyweight:
+    a:dict[str,A]={}
+    def getA(self,a):
+        try:
+            return self.a[a]
+        except:
+            self.a.update({a:A()})
+            return self.a[a]
+f=Flyweight()
+print(f.getA("x"))
+
+
+#Proxy
+from datetime import datetime
+class Manager:
+    def service(self):
+        print("servicing")
+class Asst(Manager):
+    def service(self):
+        if(datetime.now().hour==12 and datetime.now().minute >30):
+            print("Lunch Break")
+
+
+Asst().service()
+
+
+
