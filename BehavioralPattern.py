@@ -31,3 +31,21 @@ class Waste(Handler):
             print(self.handle.catchs(s))
 
 (Fish(Waste(None))).catchs("waste")
+
+# Observer
+class Person:
+    def __init__(self,name):self.name= name
+    def notification(self,message):print(message)
+
+class Observer:
+    ps:list[Person]=[]
+    def add_person(self,p:Person):
+        self.ps.append(p)
+    
+    def send_notification(self,s:str):
+        for p in self.ps:p.notification(s)
+
+ram=Person("Ram")
+o=Observer()
+o.add_person(ram)
+o.send_notification("hi")
