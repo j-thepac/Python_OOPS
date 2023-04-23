@@ -17,16 +17,19 @@ class Diwali_Book(Book):
 
 # Liskov Inversion
 from abc import abstractmethod,ABC
-class Bird(ABC):pass
-
+class Bird(ABC):
+    @abstractmethod
+    def swim(self):pass
 class Penguine(Bird):
-    def eat(self):return "fish"
+    def swim(self):return "swim"
 
-class FlyingBird(Bird):
-    def fly(self):return True
+class FlyingBird(Bird,ABC):
+    @abstractmethod
+    def fly(self):pass
 
 class Eagle(FlyingBird):
-    def eat(self): return "carnivore"
+    def swim(self):return "no swim"
+    def fly(self): return "Eagle Fly"
   
 # Interface Segregation
 class Radio(ABC):
