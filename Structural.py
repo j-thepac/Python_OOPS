@@ -15,7 +15,9 @@ class Toaster:
         if(s.v>110):print("blast")
 class Adapter(Socket):
     v=110
-    def __init__(self,t:Toaster):pass
+    def __init__(self,s:Socket):
+        self.v=s.v-200
+        
 Toaster().on(Adapter(Socket()))
 
 # Bridge
