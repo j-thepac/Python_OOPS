@@ -1,3 +1,5 @@
+
+# Need to simplify
 def InsertionSort(list_a):
     for i in range(1, len(list_a)):
         value_to_sort = list_a[i]

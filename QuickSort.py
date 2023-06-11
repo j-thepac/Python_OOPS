@@ -1,8 +1,14 @@
+"""
+Use 2 Groups and 1 Pivot
+Values < pivot goes to group 1
+Values > pivot goes to group 2
+DO Recursion on each group
 
+"""
 def QuickSort(arr):
     res1,res2=[],[]
     if(len(arr)==0):return arr
-    else:pivot=arr.pop()
+    pivot=arr.pop()
     for i in arr:
         if(i<pivot):res1.append(i)
         else:res2.append(i)
