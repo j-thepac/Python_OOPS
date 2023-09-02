@@ -32,7 +32,7 @@ class Waste(Handler):
 
 (Fish(Waste(None))).catchs("waste")
 
-# Observer
+# Observer (Youtube Notification) - Pub Sub
 class Person:
     def __init__(self,name):self.name= name
     def notification(self,message):print(message)
@@ -100,8 +100,9 @@ print(acc.balance)
 acc.rollback(memento)
 print(acc.balance)
 
-# Template
+#Iterator Pattern ( Iterate an array )
 
+# Template
 from abc import ABC,abstractmethod
 class Food:
     @abstractmethod
