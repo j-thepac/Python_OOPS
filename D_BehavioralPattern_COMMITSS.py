@@ -120,9 +120,8 @@ class Book:
     price:int=100
     def buy(self,coupon:str)->int:
         d={"ten":self.ten()}
-        return d[coupon]
+        return d.get(coupon,self.price)
     def ten(self):return self.price-10
 
-print("strategy")
 book:Book=Book()
 print(book.buy('ten'))
