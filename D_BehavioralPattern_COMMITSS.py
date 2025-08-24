@@ -79,26 +79,36 @@ ram.send_notification("hi")
 
 
 # mement0
+import threading
+balance:int=0
 class Memento:
     def __init__(self,balance:int):
         self.balance=balance
 
 class Account:
-    balance:int=0
+    
     def credit(self,amt:int)->Memento:
-        memento:Memento=Memento(self.balance)
-        self.balance=self.balance+amt
+        global balance
+        memento:Memento=Memento(balance)
+        lock =threading.Lock()
+        lock.acquire()
+        balance=balance+amt
+        lock.release()
         return memento
     
     def rollback(self,memento:Memento):
-        self.balance=memento.balance
+        global balance
+        lock =threading.Lock()
+        with lock:
+            balance=memento.balance
 
 print("Memento")
 acc:Account=Account()
+print(f"Start Balance {balance}")
 memento=acc.credit(100)
-print(acc.balance)
+print(f"After crediting - {balance}")
 acc.rollback(memento)
-print(acc.balance)
+print(f"After roll back {balance}")
 
 #Iterator Pattern ( Iterate an array )
 
