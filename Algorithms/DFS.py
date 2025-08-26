@@ -18,12 +18,12 @@ root.right.left = Node(6)
 root.right.right = Node(7)
 
 def DFS(root,start):
-    stk=[root]
+    q=[root]
     res=set()
-    while stk !=[]:
-        temp=stk.pop()
+    while q !=[]:
+        temp=q.pop()
         if temp.data not in res:res.add(temp.data)
-        if(temp.left !=None): stk.append(temp.left)
-        if(temp.right !=None): stk.append(temp.right)
+        if(temp.left !=None): q.append(temp.left)
+        if(temp.right !=None): q.append(temp.right)
     return res
 print(DFS(root,'A'))
