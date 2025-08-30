@@ -1,3 +1,4 @@
+#Processes wait for a specific condition
 from threading import Condition
 import threading
 
@@ -10,7 +11,7 @@ def producer():
         shared_resource.append(1)
         shared_resource.append(2)
         condition.notify(2)  # Notify the consumer
-        # condition.notify()  # Notify the consumer
+
 
 def consumer():
     with condition:
