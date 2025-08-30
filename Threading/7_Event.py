@@ -1,22 +1,21 @@
-from threading import Event
-import threading
-event = Event()
+"""  
+All waiting threads are unblocked once set
+"""
 
-def wait_for_event():
-    print("Waiting for event...")
-    event.wait()  # Block until the event is set
-    print("Event occurred!")
 
-# Start a thread that waits for the event
-thread = threading.Thread(target=wait_for_event)
-thread2 = threading.Thread(target=wait_for_event)
+import threading, time
 
-thread.start()
-thread2.start()
+event = threading.Event()
 
-event.set() 
+def worker_event(i):
+    print(f"Worker {i} waiting...")
+    event.wait()   # wait until event is set
+    print(f"Worker {i} started!")
 
-thread.join()
-thread2.join()
- # Trigger the event
-# Advantages: Simple way to signal between threads.
+for i in range(2):
+    threading.Thread(target=worker_event, args=(i,)).start()
+    
+
+time.sleep(1)
+print("Main sets event")
+event.set()   # all workers proceed
