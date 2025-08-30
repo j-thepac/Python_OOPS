@@ -15,7 +15,7 @@ class Diwali_Book(Book):
     def get_price(self):return self.price*0.1
 
 
-# Liskov Inversion
+# Liskov Inversion-Subclass shd implement all methods of the parent class
 from abc import abstractmethod,ABC
 class Bird(ABC):
     @abstractmethod
@@ -31,7 +31,7 @@ class Eagle(FlyingBird):
     def swim(self):return "no swim"
     def fly(self): return "Eagle Fly"
   
-# Interface Segregation
+# Interface Segregation:avoid implementing unwanted methods 
 class Radio(ABC):
     def play(self): return("song")
 

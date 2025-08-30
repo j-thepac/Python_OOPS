@@ -34,6 +34,13 @@ class BinaryTree:
         if(self.left):self.left.inRoot()
         print(self.i)
         if(self.right):self.right.inRoot()
+        
+    def maxDepth(self, root:BinaryTree) -> int:
+        if root == None:  return 0
+        else:
+            temp= 1 + max(self.maxDepth(root.left) ,  self.maxDepth(root.right) )
+            return temp
+
 
 def preRoot2(root):
     if root is None:return
