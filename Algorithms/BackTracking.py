@@ -10,8 +10,6 @@ def fn(A,res,subset,index):
 fn([1, 2], res, [], 0)
 print(res)
 
- def fn(v):
-  if v=="":return ""
   
 
 
